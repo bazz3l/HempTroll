@@ -3,7 +3,7 @@ using Oxide.Core;
 
 namespace Oxide.Plugins
 {
-    [Info("Hemp Troll", "Bazz3l", "1.0.1")]
+    [Info("Hemp Troll", "Bazz3l", "1.0.2")]
     [Description("Gives a random item to players when picking up hemp bushes.")]
     class HempTroll : RustPlugin
     {
@@ -25,8 +25,6 @@ namespace Oxide.Plugins
         #endregion
 
         #region Config
-        protected override void LoadDefaultConfig() => Config.WriteObject(GetDefaultConfig(), true);
-
         PluginConfig GetDefaultConfig()
         {
             return new PluginConfig
@@ -61,13 +59,14 @@ namespace Oxide.Plugins
         #endregion
 
         #region Oxide
+        protected override void LoadDefaultConfig() => Config.WriteObject(GetDefaultConfig(), true);
+
         protected override void LoadDefaultMessages()
         {
             lang.RegisterMessages(new Dictionary<string, string> {
                 {"GiveItem", "<color=#DC143C>Hemp Troll</color>: You picked up {0}x {1}."}
             }, this);
         }
-
 
         void Init()
         {
